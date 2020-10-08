@@ -24,7 +24,7 @@ def locate_figures(pages):
                 'topleft.png', confidence=0.8)
             br_left, br_top = pyautogui.locateCenterOnScreen(
                 'bottomright.png', confidence=0.8)
-        # Normally, you can't unpack 'None' returns into two coordinates as shown above, but I created a workaround to do so.
+        # Normally, you can't unpack return types of 'None' into two coordinates as shown above, but I created a workaround to do so.
         except TypeError:
             tl_left, tl_top = None, None
             br_left, br_top = None, None
@@ -32,7 +32,7 @@ def locate_figures(pages):
         print(tl_left, tl_top)
         print(br_left, br_top)
         # Only take screenshot if coordinates exists
-        if tl_left or tl_top or br_left or br_top != None:
+        if tl_left or tl_top or br_left or br_top is not None:
             ss_region = (tl_left, tl_top, br_left, br_top)
             # through testing, the 'mss' backend of screenshotting is the fastest
             image = ImageGrab.grab(
